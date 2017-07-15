@@ -1,0 +1,78 @@
+body {
+  margin: 0;
+  padding: 0px;
+  font-family: sans-serif;
+  /*background-image: url('bg.jpg');*/
+  /*background-repeat: no-repeat;*/
+  background-size:1450px auto;
+}
+h1{
+  font-size: 50px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  text-align: center;
+  color: #ffffff;
+  margin-left: -110px;
+}
+ul{
+  margin-top: 30px;
+  padding: 0px;
+}
+.container{
+  position: relative;
+  top:100px;
+  padding: 50px;
+  width:600px;
+  height: auto;
+  color: #ffffff;
+  margin: 0 auto;
+}
+li{
+  /*border:1px solid silver;
+  background-color: blanchedalmond;*/
+margin: 0;
+padding: 0;
+font-family: Arial, Helvetica, sans-serif;
+list-style-type: none;
+text-transform: capitalize;
+font-size:35px;
+}
+
+input {
+    border: none;
+    width: 75%;
+    padding: 10px;
+    border-radius: 30px; 
+    font-size: 16px;
+}
+input:focus {
+  font-size:20px;
+background-color: #ffffff;
+border: 1px solid #b1e1e4;
+}
+button{
+    background-color: #ffffff;
+    height: 30px;
+    border-radius:20px;
+    float: right;
+    width: 120px;
+    height: 40px;
+}
+button:hover{
+   border: 1px solid #ffffff; 
+    background-color: #bdbdbd;
+    color: #ffffff;
+}
+.deleteAll{
+      float: left;
+    margin: 0px 0px 0px -130px;
+}
+.completed{
+  color:red;
+  font-size: 50px;
+}
+/*.topBar{
+  border:1px solid #000000;
+}*/
+.StudentLinks{
+  border:1px solid black;
+}
