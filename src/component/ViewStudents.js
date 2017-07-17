@@ -11,6 +11,8 @@ super(props);
     }
 }
 componentDidMount(){
+        firebase.auth().onAuthStateChanged(()=>{
+      if(firebase.auth().currentUser){
     firebase.database().ref("user").once("value").then(snap=>{
         let obj = snap.val();
         let companiesObj = {};
@@ -40,21 +42,23 @@ componentDidMount(){
             companies
         })
     })
-console.log(this.state.companies);
+        }})
+// console.log(this.state.companies);
 }
 
 render(){
     return(
         <div className="div3">
-        <h1>All Companies</h1> 
+        <h1>All Students</h1> 
 
                     
                 {
                     this.state.students && this.state.students.length ?
                     this.state.students.map((data) => {
                         return <div className="EachJob">
-                      {data.name}
-                     
+                  {<span>Name: </span>}       {data.name}<br />
+                   {<span>Email: </span>}      {data.email}<br />
+                    {<span>Type: </span>}     {data.type}<br/>
                          </div>
                     })
                     : false

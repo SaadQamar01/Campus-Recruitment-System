@@ -7,82 +7,121 @@ class ViewJobs extends Component {
     constructor() {
         super();
         this.state = {
-            jobs: []
+            jobs: [],
+            jobKeys:[],
+            checkAdmin:false
         }
     }
-
 componentDidMount(){
+        firebase.auth().onAuthStateChanged(()=>{
+      if(firebase.auth().currentUser){
+   var currentEmail= firebase.auth().currentUser.email;
+   if(currentEmail=="admin@gmail.com"){
+       this.setState({
+           checkAdmin:true
+       })
+   }
+
     firebase.database().ref("jobs").on("value", snap=>{
-        // alert("runs")
         let obj = snap.val();
+        // console.log(obj);
         let jobs = [];
+        let jobKeys=[];
         for(let key in obj)
         {
-            // alert('s')
+            jobKeys.push(key)
             jobs.push(
                 obj[key]
             )
         }
-        this.setState({jobs})
-        // console.log(this.state)
+        // console.log(jobKeys);
+        this.setState({
+        jobs:jobs,
+        jobKeys:jobKeys})
+        // console.log(this.state);
+    })
+        }
     })
 }
 
-    // componentDidMount() {
-        // console.log("hello")
-        // const rootRef = firebase.database().ref();
-        // const speedRef = rootRef.child('jobs');
-        // speedRef.on('value', snap => {
-        //     var userObj = snap.val()
-        //     this.setState({ AllJobs: userObj })
-            //  this.setState((prev)=>(
-            //      {AllJobs: prev.AllJobs.concat(userObj)} 
-            //  ))
-            // console.log(userObj)
+deletejob(index){
+   var key= this.state.jobKeys[index];
+//    alert();
+//    console.log(keys);
+    firebase.database().ref('jobs/'+key).remove();
 
-            // this.setState({AllJobs: this.state.push(userObj)});
-        // })
-        // console.log(this.state.AllJobs)
-    // }
-    // componentDidMount(){
-    //      this.props.history.push('/student');
-    // }
+}
+Applyjob(index){
+     var currentUser= firebase.auth().currentUser;
+     var currentId= firebase.auth().currentUser.uid;
+     firebase.database().ref("cv/"+currentId).on("value",snap=>{
+         let obj=(snap.val() || {
+             name: currentUser.displayName,
+             email: currentUser.email,
+         });
+        //  console.log(obj);
+      var rootRef=firebase.database().ref();
+           const speedRef=rootRef.child("jobs/"+this.state.jobKeys[index]+"/apply/"+currentId).set(obj)
+     })
+}
     render() {
 
         return (
-
-
-
     <div className="">    
     <ul className="jobsList">
         {this.state.jobs.map((job,index)=>(
-            <li className="EachJob" key={index}> 
+            //         if(job.apply){
+            // var applyList = [];
+            // for(let a in job.apply){
+            //     applyList.push(job.apply[a])
+            // }
+        
+            // return(
+    <li className="EachJob" key={index}> 
          {<span>Job Title: </span>}   {job.jobTitle} <br />
           {<span>Salary: </span>}  {job.salary}   <br />
            {<span>Job Description: </span>} {job.jobDescription} <br />
+           {this.state.checkAdmin?
+            
+           <button onClick={this.deletejob.bind(this,index)}>Delete</button>
+            : 
+        <button onClick={this.Applyjob.bind(this,index)}>Apply</button> }
             </li>
         ))}
     </ul>
     </div>
 
-
-
-
-            // <div className="div2">
-            //     <h1 className="Heading">All Jobs</h1>
-            //     {
-            //         this.state.AllJobs && this.state.AllJobs.length ?
-            //         this.state.AllJobs.map((data) => {
-            //             return <div className="EachJob">
-            //           {<span>Job Title:</span>}  {data.jobTitle} {<br />}
-            //           {<span>Job Description:</span>}  {data.jobDescription}  {<br />}
-            //           {<span>Salary:</span>}  {data.salary}
-            //              </div>
-            //         })
-            //         : false
-            //     }
-            // </div>
         );
     }
 }
 export default ViewJobs;
+
+                                        // {applyList && 
+                                        //     <tr>
+                                        //         <td colSpan={2}>
+                                        //             <h2 className="text-center">Apply By {applyList.length} Candidats</h2>
+                                        //             <table className="table">
+                                        //                 <thead>
+                                        //                     <tr>
+                                        //                         <th>Name</th>
+                                        //                         <th>Email</th>
+                                        //                         <th>Phone</th>
+                                        //                         <th>Skills</th>
+                                        //                         <th>Interest</th>
+                                        //                     </tr>
+                                        //                 </thead>
+                                        //                 <tbody>
+                                        //                     {applyList.map((cv, key)=>(
+                                        //                         <tr key={key}>
+                                        //                             <td>{(cv.name       || '-')}</td>
+                                        //                             <td>{(cv.email      || '-')}</td>
+                                        //                             <td>{(cv.mobile     || '-')}</td>
+                                        //                             <td>{(cv.skill      || '-')}</td>
+                                        //                             <td>{(cv.interest   || '-')}</td>                                                               
+                                        //                         </tr>
+                                        //                     ))}
+                                        //                 </tbody>
+                                        //             </table>
+                                        //         </td>
+                                        //     </tr>
+                                        // }

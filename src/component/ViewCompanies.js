@@ -8,12 +8,23 @@ super(props);
         students:[],
         companies:[],
         all:[]
+        // companiesKeys:[]
     }
 }
+// view(index){
+//     let companyForView =  companies[index];
+//     return(
+//         <table>
+
+//         </table>   
+//     )
+// }
 componentDidMount(){
+    firebase.auth().onAuthStateChanged(()=>{
+      if(firebase.auth().currentUser){
     firebase.database().ref("user").once("value").then(snap=>{
         let obj = snap.val();
-        console.log(obj);
+        // console.log(obj);
         let companiesObj = {};
         let studentsObj = {};
         for(let key in obj){
@@ -25,11 +36,14 @@ componentDidMount(){
             {
                 companiesObj[key] = obj[key]; 
             }
+
         }
         let students = [];
         let companies = [];
+        // let companiesKeys = [];
         for(let a in companiesObj)
         {
+            // companiesKeys.push(a)
             companies.push(companiesObj[a])
         }
         for(let a in studentsObj)
@@ -39,9 +53,11 @@ componentDidMount(){
         this.setState({
             students,
             companies
+            // companiesKeys
         })
     })
-console.log(this.state.companies);
+    }})
+// console.log(this.state.companies);
 }
 
 render(){
@@ -52,11 +68,13 @@ render(){
                     
                 {
                     this.state.companies && this.state.companies.length ?
-                    this.state.companies.map((data) => {
+                    this.state.companies.map((data,index) => {
                         return <div className="EachJob">
-                      {data.name}
-                     
+                    {<span>Name: </span>}   {data.name} <br />
+                    {<span>Email: </span>}     {data.email}<br />
+                     {<span>Type: </span>}    {data.type}
                          </div>
+                         
                     })
                     : false
                 }

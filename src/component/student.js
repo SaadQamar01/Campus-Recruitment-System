@@ -20,13 +20,17 @@ class Student extends React.Component {
     }
   }
   componentDidMount() {
-    var Rootref=firebase.database().ref().child("user/"+firebase.auth().currentUser.uid);
+    firebase.auth().onAuthStateChanged(()=>{
+      if(firebase.auth().currentUser){
+            var Rootref=firebase.database().ref().child("user/"+firebase.auth().currentUser.uid);
      Rootref.on("value",snap=>{
        let currentUserObj=snap.val()
                this.setState({
                   user: currentUserObj
           });
       }) 
+      }
+    })
   }
   // componentDidMount(){
   //             var rootRef=firebase.database().ref();

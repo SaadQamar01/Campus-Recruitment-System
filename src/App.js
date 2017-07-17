@@ -4,7 +4,6 @@ import './App.css';
 import Signup from './component/signup.js'
 import Signin from './component/signin.js'
 import Admin from './component/admin.js'
-import LoggedinPannel from './component/loggedinPanel.js'
 import Company from './component/company.js'
 import Student from './component/student.js'
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
@@ -56,7 +55,7 @@ componentWillMount(){
 render() {
   return (
     <div className="nav">
-    <h1 className="heading1">Campus Recuitment System</h1>
+    <h1 className="heading1">Campus Recuirtment System</h1>
       <Router>
       <div className="container">
           {!this.state.user.email?
@@ -71,7 +70,7 @@ render() {
                 firebase.auth().signOut()
                 }
               }
-             className="button btn btn-primary">SignOUT</Link>
+             className="button btn btn-primary">Sign Out</Link>
           </div>}
 
           <Route exact path="/" component={Signin} />

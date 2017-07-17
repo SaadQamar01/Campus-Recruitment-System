@@ -34,7 +34,10 @@ render(){
       <img src={image} className="cover" title="Cover" height="400px" width="1440px"/>   
       <img src={imageDp} className="dp" title="Cover" height="200px" width="200px"/> 
       <div className="userInfo">
-        <h1>User Information</h1>
+        <h1>Admin Pannel</h1>
+        <h3> Name : Admin  </h3>
+        <h3> User Email : admin@gmail.com </h3>
+        <h3> User Type : Admin </h3>
       </div>
       </div>  
         

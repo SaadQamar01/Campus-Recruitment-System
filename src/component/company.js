@@ -19,6 +19,8 @@ class Company extends React.Component {
     }
   }
   componentDidMount() {
+            firebase.auth().onAuthStateChanged(()=>{
+      if(firebase.auth().currentUser){
     var Rootref=firebase.database().ref().child("user/"+firebase.auth().currentUser.uid);
      Rootref.on("value",snap=>{
        let currentUserObj=snap.val()
@@ -26,6 +28,8 @@ class Company extends React.Component {
                   user: currentUserObj
           });
       }) 
+            }
+          })
   }
   render() {
     return (

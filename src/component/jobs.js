@@ -13,33 +13,38 @@ job(ev){
 //   uid:firebase.auth().currentUser.uid,   
   jobTitle:this.refs.jobTitle.value,
   salary:this.refs.salary.value,
-  jobDescription:this.refs.jobDescription.value
+  jobDescription:this.refs.jobDescription.value,
+  uid: firebase.auth().currentUser.uid
  }
-
                 var allJobs=firebase.database().ref();
                 const allJobs1=allJobs.child("jobs").push(
                  job
            )
+        this.setState({
+            jobs: [...this.state.jobs,job]
+        })   
+           alert("Job Posted");
     
 }
+
 componentDidMount(){
-    firebase.database().ref("jobs").on("value", snap=>{
-        // alert("runs")
-        let obj = snap.val();
+            firebase.auth().onAuthStateChanged(()=>{
+      if(firebase.auth().currentUser){
+  firebase.database().ref('jobs').orderByChild('uid').equalTo(firebase.auth().currentUser.uid).once('value').then((snap) => {
+        var obj = snap.val();
+        console.log(obj);
         let jobs = [];
         for(let key in obj)
         {
-            // alert('s')
             jobs.push(
                 obj[key]
             )
         }
+        console.log(jobs);
         this.setState({jobs})
-        // console.log(this.state)
+        console.log(this.state.jobs);
     })
-}
-getData(){
-    
+            }})
 }
 render(){
     return(
@@ -56,6 +61,7 @@ render(){
          {<span>Job Title: </span>}   {job.jobTitle} <br />
           {<span>Salary: </span>}  {job.salary}   <br />
            {<span>Job Description: </span>} {job.jobDescription} <br />
+           <span>Applier</span>
             </li>
         ))}
     </ul>
