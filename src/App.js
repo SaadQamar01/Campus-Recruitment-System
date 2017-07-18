@@ -6,6 +6,7 @@ import Signin from './component/signin.js'
 import Admin from './component/admin.js'
 import Company from './component/company.js'
 import Student from './component/student.js'
+
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import * as firebase from 'firebase';
 
@@ -54,6 +55,7 @@ componentWillMount(){
 
 render() {
   return (
+    <div className="background">
     <div className="nav">
     <h1 className="heading1">Campus Recuirtment System</h1>
       <Router>
@@ -80,6 +82,7 @@ render() {
           <Route path="/company" component={Company}/>
       </div>
       </Router>
+      </div>
       </div>
   );
 }

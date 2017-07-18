@@ -57,7 +57,6 @@ componentDidMount(){
         })
     })
     }})
-// console.log(this.state.companies);
 }
 
 render(){
@@ -69,7 +68,7 @@ render(){
                 {
                     this.state.companies && this.state.companies.length ?
                     this.state.companies.map((data,index) => {
-                        return <div className="EachJob">
+                        return <div className="eachList">
                     {<span>Name: </span>}   {data.name} <br />
                     {<span>Email: </span>}     {data.email}<br />
                      {<span>Type: </span>}    {data.type}

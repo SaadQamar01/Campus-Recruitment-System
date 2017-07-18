@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import * as firebase from 'firebase';
-
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 // import logo from './logo.svg';
 // import { BrowserRouter as  Router,Route,Link } from "react-router-dom";
@@ -51,7 +50,6 @@ class Signin extends Component {
     <input type="submit" value="Sign In"/>
       </form>
       </div>
-    // <h1>SignIn</h1>
       );
 }
 }

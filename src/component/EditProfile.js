@@ -69,14 +69,14 @@ class EditProfile extends React.Component{
 
   render() {
     return (
-      <div>
-        <h1>Edit Profile</h1>
+      <div className="cvForm">
+        <h1>Edit CV</h1>
         <input type="text" ref="name" placeholder="Full Name" /><br />
         <input type="text" ref="education" placeholder="Education" /><br />
         <input type="text" ref="gpa" placeholder="GPA" /><br />
         <input type="text" ref="skills" placeholder="Skills" /><br />
         <input type="text" ref="overview" placeholder="Overview" /><br /><br />
-        <button onClick={this.edit.bind(this)}>Edit Profile</button>
+        <button className="button1" onClick={this.edit.bind(this)}>Edit CV</button>
       </div>
     );
   }

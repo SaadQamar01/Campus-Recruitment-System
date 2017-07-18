@@ -24,7 +24,7 @@ componentDidMount(){
 
     firebase.database().ref("jobs").on("value", snap=>{
         let obj = snap.val();
-        // console.log(obj);
+        console.log(obj);
         let jobs = [];
         let jobKeys=[];
         for(let key in obj)
@@ -34,11 +34,11 @@ componentDidMount(){
                 obj[key]
             )
         }
-        // console.log(jobKeys);
+        console.log(jobKeys);
         this.setState({
         jobs:jobs,
         jobKeys:jobKeys})
-        // console.log(this.state);
+        console.log(this.state);
     })
         }
     })
@@ -68,7 +68,8 @@ Applyjob(index){
 
         return (
     <div className="">    
-    <ul className="jobsList">
+    <ul className="allList">
+    <h1>All Jobs</h1>
         {this.state.jobs.map((job,index)=>(
             //         if(job.apply){
             // var applyList = [];
@@ -77,7 +78,7 @@ Applyjob(index){
             // }
         
             // return(
-    <li className="EachJob" key={index}> 
+    <li className="eachList" key={index}> 
          {<span>Job Title: </span>}   {job.jobTitle} <br />
           {<span>Salary: </span>}  {job.salary}   <br />
            {<span>Job Description: </span>} {job.jobDescription} <br />

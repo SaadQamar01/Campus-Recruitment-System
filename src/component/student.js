@@ -60,13 +60,14 @@ render(){
       </div>
       <img src={image} className="cover" title="Cover" height="400px" width="1440px" />
       <img src={imageDp} className="dp" title="Cover" height="200px" width="200px" />
+  //  <div className="background"></div> 
       <div className="userInfo">
         <h1>User Information</h1>
-        <h3> User Name : {this.state.user.name} </h3>
-        <h3> User Email : {this.state.user.email} </h3>
-        <h3> User Type : {this.state.user.type} </h3>
+        <h3> Name : {this.state.user.name} </h3>
+        <h3>  Email : {this.state.user.email} </h3>
+        <h3>  Type : {this.state.user.type} </h3>
       </div>
-    </div>  
+     </div>
     )
 }}
 export default Student;

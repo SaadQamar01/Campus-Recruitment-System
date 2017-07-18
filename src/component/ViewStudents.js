@@ -49,13 +49,11 @@ componentDidMount(){
 render(){
     return(
         <div className="div3">
-        <h1>All Students</h1> 
-
-                    
+        <h1>All Students</h1>          
                 {
                     this.state.students && this.state.students.length ?
                     this.state.students.map((data) => {
-                        return <div className="EachJob">
+                        return <div className="eachList">
                   {<span>Name: </span>}       {data.name}<br />
                    {<span>Email: </span>}      {data.email}<br />
                     {<span>Type: </span>}     {data.type}<br/>
