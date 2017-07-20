@@ -22,9 +22,9 @@ super(props);
 componentDidMount(){
     firebase.auth().onAuthStateChanged(()=>{
       if(firebase.auth().currentUser){
-    firebase.database().ref("user").once("value").then(snap=>{
+    firebase.database().ref("user").on("value",snap=>{
         let obj = snap.val();
-        // console.log(obj);
+        console.log(obj);
         let companiesObj = {};
         let studentsObj = {};
         for(let key in obj){

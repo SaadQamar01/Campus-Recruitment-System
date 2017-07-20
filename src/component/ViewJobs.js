@@ -21,7 +21,7 @@ componentDidMount(){
            checkAdmin:true
        })
    }
-
+ 
     firebase.database().ref("jobs").on("value", snap=>{
         let obj = snap.val();
         console.log(obj);
@@ -34,11 +34,11 @@ componentDidMount(){
                 obj[key]
             )
         }
-        console.log(jobKeys);
+        // console.log(jobKeys);
         this.setState({
         jobs:jobs,
         jobKeys:jobKeys})
-        console.log(this.state);
+        // console.log(this.state);
     })
         }
     })
@@ -63,6 +63,7 @@ Applyjob(index){
       var rootRef=firebase.database().ref();
            const speedRef=rootRef.child("jobs/"+this.state.jobKeys[index]+"/apply/"+currentId).set(obj)
      })
+     alert('Applied');
 }
     render() {
 

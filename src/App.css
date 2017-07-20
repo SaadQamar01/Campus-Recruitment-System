@@ -1,3 +1,10 @@
+html{
+  /*background-image: url('background.jpg');
+  background-size: 1400px 700px;
+        background-repeat: no-repeat; */
+background-color: silver;
+}
+
 body{
   font-family: 'Times New Roman', Times, serif;
   /*color:white;*/
@@ -7,6 +14,7 @@ body{
   height:100px;
   width:1440px;
   background-color:#7C7C7C; 
+  
 }
 /*h1{
   margin-top:800px;
@@ -21,7 +29,7 @@ body{
   /*border:1px solid black;*/
 }
 .form{
-  background-color: #fff;
+  background-color: #0275d8;
   box-shadow: 2px 2px 5px #ccc;
   border:1px solid lightslategrey;
   position:flex;
@@ -77,13 +85,13 @@ body{
 .cover{
   position:absolute;
   top:100px;
-  right:400px;
+  right:0px;
 }
 .dp{
   position:absolute;
   z-index: 10;
  top: 140px;
- left:-60px;
+ left:70px;
  border-radius:100px; 
 }
 /*View Jobs And View Companies*/
@@ -146,7 +154,7 @@ body{
   /*border:1px solid black;*/
   position:absolute;
   top:500px;
-  right:400px;
+  right:5px;
   font-size: 30px;
   z-index: 10 ;
   padding-left:400px; 
@@ -166,7 +174,7 @@ body{
   text-align: center;
   z-index: 12;
  top: 370px;
- left:-160px;
+ left:-40px;
  font-family: 'Times New Roman', Times, serif;
   width:400px;
   height:100px;
@@ -195,7 +203,7 @@ background-color: #DBDBDB;
     padding:30px 0px 0px 0px; 
   text-align: center;
   width:500px;
-  left:-600px;
+  left:-450px;
   height: 300px;
   z-index:13;
   top:700px;
